@@ -1,0 +1,10 @@
+War
+
+Start with one deck of cards (array .flat .map)
+need to shuffle deck of cards and divide into two piles (.random?)
+need player and computer to draw one card (add click event)
+compare player card and computer card for a winner (if else statements)
+winner of that round keeps cards and adds it to deck (going to .push() somewhere)
+display winner of round
+player who wins all cards in deck determines winner of game **would like to add option to end game early and whoever has most cards in deck is winner if there is time**
+display winner of game
