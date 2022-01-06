@@ -70,55 +70,21 @@ const deckMidpoint = Math.ceil(deck.length / 2)
 const playerDeck = deck.slice(0, deckMidpoint)
 const compDeck = deck.slice(deckMidpoint, deck.length)
 
+
 console.log(playerDeck)
 console.log(compDeck)
+
 
 playerClick.addEventListener('click', clickEvt)
 // computerClick.addEventListener('click', clickEvt)
-
-function click(){ 
-
-playChoice.innerText = playerChoice
-compChoice.innerText = computerChoice
-// console.log(compChoice.innerText)
-// console.log(playChoice.innerText)
-getHTML()
-getWinner()
-updateWinner()
-pop()
-console.log(playerDeck)
-console.log(compDeck)
-}
-
-
 function getHTML(){
-    const cardInfo = document.getElementById('playerChoice')
+
     const suit = playerChoice.suit + playerChoice.rank
-    cardInfo.innerText = suit
-    const compInfo = document.getElementById('computerChoice')
+    playChoice.innerText = suit
     const suitComp = computerChoice.suit + computerChoice.rank
-    compInfo.innerText = suitComp
+    compChoice.innerText = suitComp
 
 }
-let playerChoice = playerDeck[0]
-let computerChoice = compDeck[0]
-
-function getWinner(){
-    if(playerChoice.rank > computerChoice.rank){
-        console.log('player wins!')
-        roundWinner = "Player 1 wins round!"
-
-    }else if(playerChoice.rank < computerChoice.rank){
-        console.log('computer wins!')
-        roundWinner = "Computer wins round!"
-    }else{
-        console.log('draw')
-        roundWinner = 'Draw'
-    }
-
-
-}
-
 function pop(){
     if(roundWinner === "Player 1 wins round!"){
         const newVal = compDeck.shift()
@@ -142,6 +108,38 @@ function pop(){
 function updateWinner(){
     gameWinner.innerText = roundWinner
 }
+function getWinner(){
+    if(playerChoice.rank > computerChoice.rank){
+        console.log('player wins!')
+        roundWinner = "Player 1 wins round!"
+
+    }else if(playerChoice.rank < computerChoice.rank){
+        console.log('computer wins!')
+        roundWinner = "Computer wins round!"
+    }else{
+        console.log('draw')
+        roundWinner = 'Draw'
+    }
+
+
+}
+
+function draw(){ 
+
+// playChoice.innerText = playerChoice
+// compChoice.innerText = computerChoice
+// console.log(compChoice.innerText)
+// console.log(playChoice.innerText
+getHTML()
+getWinner()
+updateWinner()
+pop()
+console.log(playerDeck)
+console.log(compDeck)
+}
+let playerChoice = playerDeck[0]
+let computerChoice = compDeck[0]
+
 
 
 function nextMove(){
@@ -149,21 +147,27 @@ function nextMove(){
     const compNum = compDeck.length
     playerClick.innerText = playNum
     computerClick.innerText = compNum
-    console.log(playNum)
+    // console.log(playNum)
     const compInfo = document.getElementById('computerChoice')
     const cardInfo = document.getElementById('playerChoice')
     compInfo.innerText = ''
     cardInfo.innerText = ''
     gameWinner.innerText = ''
+    console.log(playerDeck)
+    console.log(compDeck)
 }
 
 function clickEvt(){
     if(gameWinner.innerText === ''){
-        click()
+        draw()
     }else{
         nextMove()
     }
 }
 
-
-
+// function flip(){
+//     return playerDeck.shift()
+// }
+// function flipComp(){
+//     return compDeck.shift()
+// }

@@ -2,8 +2,8 @@
 
 body {
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: 200px 300px 50px;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: 200px 100px 50px;
     grid-row-gap: 40px;
     margin: 0;
     padding: 5px;
@@ -40,20 +40,19 @@ body {
     font-size: 50px;
 }
 .result{
-    grid-row: span 3;
+    grid-column: span 4;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
     font-size: 10px;
-    padding: 0px 0px 120px 0px;
+    padding: 40px 0px 120px 0px;
 }
 
 .button{
     margin: 10px;
 }
-
 .cardTwo{
     display: flex;
     justify-content: center;
     align-items:center;
+    color: red;
 }
