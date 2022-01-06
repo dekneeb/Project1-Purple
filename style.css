@@ -5,6 +5,7 @@ body {
     grid-template-columns: repeat(4, 200px);
     grid-template-rows: 200px 100px 50px;
     grid-row-gap: 40px;
+    grid-column-gap: 10px;
     margin: 0;
     padding: 5px;
     cursor: pointer;
@@ -54,5 +55,12 @@ body {
     display: flex;
     justify-content: center;
     align-items:center;
-    color: red;
+    border-radius: 5px;
+    height: 200px;
+    width: 150px;
+    position: relative;
+    margin: 20px;
+    user-select: none;
+    padding: 5px;
+
 }

@@ -2,23 +2,24 @@ console.log('JS Loaded')
 
 const playerClick = document.getElementById('playerDeck')
 const computerClick = document.getElementById('computerDeck')
-
+const start = document.getElementById('start')
 const playChoice = document.getElementById('playerChoice')
 const compChoice = document.getElementById('computerChoice')
 const gameWinner = document.getElementById('msgContent')
-
-
+const color = document.getElementsByClassName('cardTwo')
+let playerCard = null
+let compCard = null
 
 let winner = ''
 let roundWinner = ''
 
 class Card {
-    constructor(suit, rank){
+    constructor(suit, number){
         this.suit = suit 
-        this.rank = rank
+        this.number = number
     }
 }
-const cardNumber = {
+const cardLookUpTable = {
     "2" : 2,
     "3" : 3,
     "4" : 4,
@@ -43,15 +44,15 @@ const number = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'
 
 for(let i=0; i<suit.length; i++){
     for (let r=0; r<number.length; r++){
-        console.log(suit[i], number[r])
+        // console.log(suit[i], number[r])
         const newCard = new Card(suit[i], number[r])
-        console.log(newCard)
+        // console.log(newCard)
         deck.push(newCard)
     }
 
 }
 
-console.log(deck)
+// console.log(deck)
 function shuffle(){
     for(let i = deck.length -1; i > 0; i--){
         let j = Math.floor(Math.random() * i);
@@ -76,69 +77,84 @@ console.log(compDeck)
 
 
 playerClick.addEventListener('click', clickEvt)
-// computerClick.addEventListener('click', clickEvt)
+// start.addEventListener('click', startGame)
+
+
+// startGame(){
+
+// }
+
 function getHTML(){
-
-    const suit = playerChoice.suit + playerChoice.rank
-    playChoice.innerText = suit
-    const suitComp = computerChoice.suit + computerChoice.rank
-    compChoice.innerText = suitComp
-
-}
-function pop(){
-    if(roundWinner === "Player 1 wins round!"){
-        const newVal = compDeck.shift()
-        const firstCard = playerChoice
-        playerDeck.shift()
-        playerDeck.push(newVal)
-        playerDeck.push(firstCard)
-       
-        
-    }else if(roundWinner === "Computer wins round!"){
-         const newCal = playerDeck.shift()
-         compDeck.shift()
-         compDeck.push(newCal)
-         compDeck.push(computerChoice)
-        
-        
-    }
+    playerCard = playerDeck.shift()
+    console.log(playerCard)
+    playChoice.innerHTML = playerCard.number + playerCard.suit
+    compCard = compDeck.shift()
+    console.log(compCard)
+    compChoice.innerHTML = compCard.number + compCard.suit
     
 }
 
-function updateWinner(){
-    gameWinner.innerText = roundWinner
-}
+
+
+
 function getWinner(){
-    if(playerChoice.rank > computerChoice.rank){
+    if(cardLookUpTable[compCard.number] < cardLookUpTable[playerCard.number]){
         console.log('player wins!')
         roundWinner = "Player 1 wins round!"
 
-    }else if(playerChoice.rank < computerChoice.rank){
+    }else if(cardLookUpTable[compCard.number] > cardLookUpTable[playerCard.number]){
         console.log('computer wins!')
         roundWinner = "Computer wins round!"
     }else{
         console.log('draw')
         roundWinner = 'Draw'
     }
-
-
 }
+
+function updateWinner(){
+    gameWinner.innerText = roundWinner
+}
+
+function moveCards(){
+   
+    if(roundWinner === "Player 1 wins round!"){
+        const firstCard = playChoice
+        const firstCal = compChoice
+        playerDeck.push(firstCard)
+        playerDeck.push(firstCal)
+        // console.log(firstCard)
+           
+            
+    }else if(roundWinner === "Computer wins round!"){
+        const firstCard = playChoice
+        const firstCal = compChoice
+        compDeck.push(firstCal)
+        compDeck.push(firstCard)
+        // console.log(firstCal)
+            
+            
+    }else if(roundWinner === 'Draw'){
+        const firstCard = playChoice
+        const firstCal = compChoice
+        compDeck.push(firstCal)
+        playerDeck.push(firstCard)
+    }
+        
+}
+
 
 function draw(){ 
-
-// playChoice.innerText = playerChoice
-// compChoice.innerText = computerChoice
-// console.log(compChoice.innerText)
-// console.log(playChoice.innerText
-getHTML()
-getWinner()
-updateWinner()
-pop()
-console.log(playerDeck)
-console.log(compDeck)
+    getHTML()
+    getWinner()
+    updateWinner()
+    moveCards()
+    console.log(playerDeck)
+    console.log(compDeck)
+    
 }
-let playerChoice = playerDeck[0]
-let computerChoice = compDeck[0]
+
+// let playerChoice = playerDeck[0]
+// let computerChoice = compDeck[0]
 
 
 
@@ -148,10 +164,8 @@ function nextMove(){
     playerClick.innerText = playNum
     computerClick.innerText = compNum
     // console.log(playNum)
-    const compInfo = document.getElementById('computerChoice')
-    const cardInfo = document.getElementById('playerChoice')
-    compInfo.innerText = ''
-    cardInfo.innerText = ''
+    compChoice.innerText = ''
+    playChoice.innerText = ''
     gameWinner.innerText = ''
     console.log(playerDeck)
     console.log(compDeck)
@@ -160,14 +174,14 @@ function nextMove(){
 function clickEvt(){
     if(gameWinner.innerText === ''){
         draw()
-    }else{
+    }else {
         nextMove()
-    }
+}
 }
 
-// function flip(){
-//     return playerDeck.shift()
+// function fullWinner(){
+//     if(playerDeck.length === 52){
+//         alert('Player wins game!')
+//     }
 // }
-// function flipComp(){
-//     return compDeck.shift()
-// }
+
