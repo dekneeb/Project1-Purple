@@ -2,8 +2,8 @@
 
 body{
     display: grid;
-    grid-template-columns: repeat(4, 200px);
-    grid-template-rows: 100px 200px 50px 50px 50px;
+    grid-template-columns: repeat(5, 200px);
+    grid-template-rows: 100px 200px 200px 50px 50px;
     grid-row-gap: 40px;
     grid-column-gap: 10px;
     width: 900px;
@@ -43,7 +43,7 @@ body{
     border: none;
 }
 .result{
-    grid-column: span 4;
+    
     display: flex;
     justify-content: center;
     font-size: 10px;
@@ -69,14 +69,14 @@ body{
 }
 
 .win{
-    grid-column: span 4;
+    grid-row: span 2;
    
     color: red;
     
 }
 
 .title{
-    grid-column: span 4;
+    grid-column: span 5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +84,25 @@ body{
 
 #playerChoice{
     color: '';
+    font-size: 50px;
 }
 #computerChoice{
     color: '';
+    font-size: 50px;
+}
+
+.draw{
+    border: '';
+    background-color: white;
+    height: 200px;
+    width: 150px;
+    position: relative;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: '';
+    font-size: 50px;
 }
