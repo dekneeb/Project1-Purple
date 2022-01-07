@@ -1,15 +1,14 @@
 
 
-body {
+body{
     display: grid;
     grid-template-columns: repeat(4, 200px);
-    grid-template-rows: 100px 200px 100px 50px 50px;
+    grid-template-rows: 100px 200px 50px 50px 50px;
     grid-row-gap: 40px;
     grid-column-gap: 10px;
     width: 900px;
     margin: 0;
     padding: 5px;
-    cursor: pointer;
     text-align: center;
     background-image: url('https://i.imgur.com/4gPXpDO.mp4')
     
@@ -34,12 +33,14 @@ body {
     background-color: black;
     color: thistle;
     font-size: 50px;
+    cursor: pointer;
 }
 
 .compCard{
-    background-color: thistle;
+    background-color: white;
     color: black;
     font-size: 50px;
+    border: none;
 }
 .result{
     grid-column: span 4;
@@ -56,8 +57,8 @@ body {
     display: flex;
     justify-content: center;
     align-items:center;
+    border: '' ;
     border-radius: 5px;
-    border: 1px solid black;
     height: 200px;
     width: 150px;
     position: relative;
@@ -79,4 +80,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#playerChoice{
+    color: '';
+}
+#computerChoice{
+    color: '';
 }

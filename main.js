@@ -86,26 +86,46 @@ console.log(playerDeck)
 console.log(compDeck)
 
 function getHTML(){
-    
     playerCard = playerDeck.shift()
     console.log(playerCard)
     playChoice.innerHTML = playerCard.number + playerCard.suit
+    playChoice.style.border = '1px solid black';
     compCard = compDeck.shift()
     console.log(compCard)
     compChoice.innerHTML = compCard.number + compCard.suit
-    
+    compChoice.style.border = '1px solid black';
+
+}
+function suitColor(){
+if(compCard.suit ==='♠' || compCard.suit === '♣'){
+    compChoice.style.color = 'black';
+ }else if(compCard.suit === '♦'|| compCard.suit ==='♥'){
+     compChoice.style.color = 'red'; 
+ }
+ 
+ 
+ if(playerCard.suit === '♣'|| playerCard.suit === '♠'){
+     playChoice.style.color = 'black'; 
+ }else if(playerCard.suit ===  '♥'|| playerCard.suit ==='♦'){
+     playChoice.style.color = 'red';
+ }
 }
 
-// function showWinScreen(){
-//     if(playerDeck.length === 52){
-//         finalWinner.innerHTML = 'Player 1 wins the game!!!!!'
-//     }else if(compDeck.length === 52){
-//         finalWinner.innerHTML = 'Computer has won the game.'
-//     }
+function showWinScreen(){
+    if(playerDeck.length === 52){
+        finalWinner.innerHTML = 'Player 1 wins the game!!!!!'
+    }else if(compDeck.length === 52){
+        finalWinner.innerHTML = 'Computer has won the game.'
+    }
   
-// }
+}
 
-
+function startGame(){
+    computerClick.style.backgroundColor = 'thistle';
+    computerClick.style.border = '1px solid black';
+    computerClick.innerText = '26';
+    playerClick.innerText = '26';
+}
 
 
 function getWinner(){
@@ -158,6 +178,7 @@ function moveCards(){
 
 function draw(){ 
     getHTML()
+    suitColor()
     getWinner()
     updateWinner()
     moveCards()
@@ -178,6 +199,8 @@ function nextMove(){
     gameWinner.innerText = ''
     console.log(playerDeck)
     console.log(compDeck)
+    compChoice.style.border = 'none';
+    playChoice.style.border = 'none';
 }
 
 function clickEvt(){
@@ -186,7 +209,7 @@ function clickEvt(){
     }else {
         nextMove()
 }
-// showWinScreen()
+showWinScreen()
 }
 
 
