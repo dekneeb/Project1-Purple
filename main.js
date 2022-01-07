@@ -3,10 +3,12 @@ console.log('JS Loaded')
 const playerClick = document.getElementById('playerDeck')
 const computerClick = document.getElementById('computerDeck')
 const start = document.getElementById('start')
+const reset = document.getElementById('reset')
 const playChoice = document.getElementById('playerChoice')
 const compChoice = document.getElementById('computerChoice')
-const gameWinner = document.getElementById('msgContent')
 const color = document.getElementsByClassName('cardTwo')
+const gameWinner = document.getElementById('msgContent')
+const finalWinner = document.getElementById('gameWinMsg')
 let playerCard = null
 let compCard = null
 
@@ -44,15 +46,13 @@ const number = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'
 
 for(let i=0; i<suit.length; i++){
     for (let r=0; r<number.length; r++){
-        // console.log(suit[i], number[r])
         const newCard = new Card(suit[i], number[r])
-        // console.log(newCard)
         deck.push(newCard)
     }
 
 }
 
-// console.log(deck)
+
 function shuffle(){
     for(let i = deck.length -1; i > 0; i--){
         let j = Math.floor(Math.random() * i);
@@ -61,6 +61,16 @@ function shuffle(){
         deck [j] = temp;
     }
 }
+
+
+function startGame(){
+// CSS function potentially
+
+}
+
+
+playerClick.addEventListener('click', clickEvt)
+start.addEventListener('click', startGame)
 
 shuffle(deck)
 
@@ -75,16 +85,8 @@ const compDeck = deck.slice(deckMidpoint, deck.length)
 console.log(playerDeck)
 console.log(compDeck)
 
-
-playerClick.addEventListener('click', clickEvt)
-// start.addEventListener('click', startGame)
-
-
-// startGame(){
-
-// }
-
 function getHTML(){
+    
     playerCard = playerDeck.shift()
     console.log(playerCard)
     playChoice.innerHTML = playerCard.number + playerCard.suit
@@ -93,6 +95,15 @@ function getHTML(){
     compChoice.innerHTML = compCard.number + compCard.suit
     
 }
+
+// function showWinScreen(){
+//     if(playerDeck.length === 52){
+//         finalWinner.innerHTML = 'Player 1 wins the game!!!!!'
+//     }else if(compDeck.length === 52){
+//         finalWinner.innerHTML = 'Computer has won the game.'
+//     }
+  
+// }
 
 
 
@@ -111,9 +122,11 @@ function getWinner(){
     }
 }
 
+
 function updateWinner(){
     gameWinner.innerText = roundWinner
 }
+
 
 function moveCards(){
    
@@ -153,10 +166,6 @@ function draw(){
     
 }
 
-// let playerChoice = playerDeck[0]
-// let computerChoice = compDeck[0]
-
-
 
 function nextMove(){
     const playNum = playerDeck.length
@@ -177,11 +186,7 @@ function clickEvt(){
     }else {
         nextMove()
 }
+// showWinScreen()
 }
 
-// function fullWinner(){
-//     if(playerDeck.length === 52){
-//         alert('Player wins game!')
-//     }
-// }
 

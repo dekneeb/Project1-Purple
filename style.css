@@ -3,14 +3,15 @@
 body {
     display: grid;
     grid-template-columns: repeat(4, 200px);
-    grid-template-rows: 200px 100px 50px;
+    grid-template-rows: 100px 200px 100px 50px 50px;
     grid-row-gap: 40px;
     grid-column-gap: 10px;
+    width: 900px;
     margin: 0;
     padding: 5px;
     cursor: pointer;
-    /* background-image: url('https://thumbs.gfycat.com/LegalPepperyCranefly-max-1mb.gif');
-    background-size: small; */
+    text-align: center;
+    background-image: url('https://i.imgur.com/4gPXpDO.mp4')
     
 }
 .card{
@@ -56,6 +57,7 @@ body {
     justify-content: center;
     align-items:center;
     border-radius: 5px;
+    border: 1px solid black;
     height: 200px;
     width: 150px;
     position: relative;
@@ -63,4 +65,18 @@ body {
     user-select: none;
     padding: 5px;
 
+}
+
+.win{
+    grid-column: span 4;
+   
+    color: red;
+    
+}
+
+.title{
+    grid-column: span 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
