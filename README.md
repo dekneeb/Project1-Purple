@@ -14,8 +14,8 @@ The deck is divided evenly, with each player receiving 26 cards, dealt one at a 
 THE PLAY
 Each player turns up a card at the same time and the player with the higher card takes both cards and puts them, face down, on the bottom of his stack.
 
-
+If the cards are the same value, it's a draw and the next card in the pile is turned over. The winner of the battle takes all cards.
 
 HOW TO KEEP SCORE
-The game ends when one player has won all the cards.
+Each round won is worth one point. The game ends when a player reaches a score of 15.
 
