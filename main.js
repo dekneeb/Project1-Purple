@@ -15,7 +15,10 @@ const playScore= document.getElementById('player-score')
 const computerScore= document.getElementById('comp-score')
 const gameBoard = document.getElementById('gameBoard')
 const modal = document.getElementById('modal')
+const winnerModal = document.getElementById('winner-modal')
+const computerModal = document.getElementById('computer-modal')
 const battleButton = document.getElementById('open-battle-button')
+const playAgain = document.getElementById('play-again')
 let playerCard = null
 let compCard = null
 let playerBattleCard = null
@@ -81,7 +84,7 @@ shuffle(deck)
 playerClick.addEventListener('click', clickEvt)
 start.addEventListener('click', startGame)
 battleButton.addEventListener('click', battle)
-
+// playAgain.addEventListener('click', reload)
 
 
 const deckMidpoint = Math.ceil(deck.length / 2)
@@ -110,6 +113,8 @@ function getHTML(){
    
 
 }
+
+
 
 function suitColor(){
 if(compCard.suit ==='♠' || compCard.suit === '♣'){
@@ -163,12 +168,10 @@ function updateScore(){
 
 function endGame(){
     if(playerScore === 15){
-        alert('Player is victorious!!!')
+        openPlayerWinModal()
     }else if(compScore === 15){
-        alert("Computer has won the game.")
+        openCompWinModal()
     }
-
-
 }
 
 
@@ -296,6 +299,17 @@ function moveCards(){
 function openModal(){
     if (modal == null) return
     modal.style.transform = 'translate(-50%, -50%) scale(1)';
+    overlay.classList.add('active')
+}
+function openPlayerWinModal(){
+    if (modal == null) return
+    winnerModal.style.transform = 'translate(-50%, -50%) scale(1)';
+    overlay.classList.add('active')
+   
+}
+function openCompWinModal(){
+    if (modal == null) return
+    computerModal.style.transform = 'translate(-50%, -50%) scale(1)';
     overlay.classList.add('active')
 }
 

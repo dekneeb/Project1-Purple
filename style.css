@@ -110,7 +110,7 @@ body{
 
 .title{
     color: thistle;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-variant: small-caps;
   
 }
@@ -158,6 +158,42 @@ body{
     max-width: 70%;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+.winner-modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid whitesmoke;
+    border-radius: 15px;
+    z-index: 10;
+    background-color: rgb(241, 101, 241);
+    width: 300px;
+    max-width: 70%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+.computer-modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid whitesmoke;
+    border-radius: 15px;
+    z-index: 10;
+    background-color: rgb(241, 101, 241);
+    width: 300px;
+    max-width: 70%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
 }
 
 
