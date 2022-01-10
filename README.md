@@ -19,5 +19,5 @@ If the cards are the same value, it's a draw and the next card in the pile is tu
 HOW TO KEEP SCORE
 Each round won is worth one point. The game ends when a player reaches a score of 15.
 
-Play: file:///Users/deneeboyd/sei1213/unit1/projects/Project1-Purple/index.html
+Play: https://dekneeb.github.io/War/
 
