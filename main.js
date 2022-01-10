@@ -108,7 +108,7 @@ function getHTML(){
     compChoice.innerHTML = compCard.number + compCard.suit
     compChoice.style.border = '1px solid black';
     compChoice.style.backgroundColor = 'white';
-    computerClick.style.backgroundColor = 'thistle';
+    computerClick.style.backgroundColor = 'black';
     
    
 
@@ -141,7 +141,7 @@ function showWinScreen(){
 }
 
 function startGame(){
-    computerClick.style.backgroundColor = 'thistle';
+    computerClick.style.backgroundColor = 'black';
     computerClick.style.border = '1px solid black';
     computerClick.innerText = '26';
     playerClick.innerText = '26';
