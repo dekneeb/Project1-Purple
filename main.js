@@ -11,10 +11,17 @@ const gameWinner = document.getElementById('msgContent')
 const finalWinner = document.getElementById('gameWinMsg')
 const battlePlay = document.getElementById('playerBattle')
 const battleComp = document.getElementById('compBattle')
+const playScore= document.getElementById('player-score')
+const computerScore= document.getElementById('comp-score')
+const gameBoard = document.getElementById('gameBoard')
+const modal = document.getElementById('modal')
+const battleButton = document.getElementById('open-battle-button')
 let playerCard = null
 let compCard = null
 let playerBattleCard = null
 let compBattleCard = null
+let playerScore = 0
+let compScore = 0
 
 let winner = ''
 let roundWinner = ''
@@ -73,6 +80,7 @@ shuffle(deck)
 
 playerClick.addEventListener('click', clickEvt)
 start.addEventListener('click', startGame)
+battleButton.addEventListener('click', battle)
 
 
 
@@ -91,10 +99,15 @@ function getHTML(){
     console.log(playerCard)
     playChoice.innerHTML = playerCard.number + playerCard.suit
     playChoice.style.border = '1px solid black';
+    playChoice.style.backgroundColor = 'white';
     compCard = compDeck.shift()
     console.log(compCard)
     compChoice.innerHTML = compCard.number + compCard.suit
     compChoice.style.border = '1px solid black';
+    compChoice.style.backgroundColor = 'white';
+    computerClick.style.backgroundColor = 'thistle';
+    
+   
 
 }
 
@@ -127,6 +140,35 @@ function startGame(){
     computerClick.style.border = '1px solid black';
     computerClick.innerText = '26';
     playerClick.innerText = '26';
+    gameBoard.style.pointerEvents = 'all';
+}
+
+function score(){
+    if(roundWinner === "Player 1 wins round!"){
+        playerScore = playerScore + 1
+        console.log(playerScore)
+                
+    }else if(roundWinner === "Computer wins round!"){
+      compScore = compScore + 1
+        console.log(compScore)
+    }
+    
+}
+
+function updateScore(){
+    playScore.innerText = "Player Score: " + playerScore 
+    computerScore.innerText = "Computer Score: " + compScore
+
+}
+
+function endGame(){
+    if(playerScore === 15){
+        alert('Player is victorious!!!')
+    }else if(compScore === 15){
+        alert("Computer has won the game.")
+    }
+
+
 }
 
 
@@ -147,15 +189,18 @@ function getWinner(){
 
 
 function getBattleHTML(){
-    playerBattleCard = playerDeck[3]
+    playerBattleCard = playerDeck[1]
     console.log(playerBattleCard)
     battlePlay.innerHTML = playerBattleCard.number + playerBattleCard.suit
     battlePlay.style.border = '1px solid black';
-    compBattleCard = compDeck[3]
+    battlePlay.style.backgroundColor = 'white';
+    compBattleCard = compDeck[1]
     console.log(compCard)
     battleComp.innerHTML = compBattleCard.number + compBattleCard.suit
     battleComp.style.border = '1px solid black';
+    battleComp.style.backgroundColor = 'white';
 }
+
 
 function getBattleWinner(){
     if(cardLookUpTable[compBattleCard.number] < cardLookUpTable[playerBattleCard.number]){
@@ -184,24 +229,25 @@ function battleSuitColor(){
 
 
 function updateBattleWinner(){
-
+    gameWinner.innerText = battleWinner
 }
   
 
 function moveBattleCards(){
-    if(battleWinner === "Player is victorious"){
-        const firstBattleCard = playerDeck[0, 1, 2, 3]
-        const firstBattleCal = compDeck[0, 1, 2, 3]
+    if(battleWinner === "Player is victorious!"){
+        const firstBattleCard = playerDeck[1]
+        const firstBattleCal = compDeck[1]
         playerDeck.push(firstBattleCard)
         playerDeck.push(firstBattleCal)
-        // console.log(firstCard)
+        console.log(firstBattleCard)
            
             
     }else if(battleWinner === "Computer has won the battle."){
-        const firstBattleCard = playerDeck[0, 1, 2, 3]
-        const firstBattleCal = compChoice[0, 1, 2, 3]
+        const firstBattleCard = playerDeck[1]
+        const firstBattleCal = compChoice[1]
         compDeck.push(firstBattleCal)
         compDeck.push(firstBattleCard)
+        console.log(firstBattleCard)
 }
 
 }
@@ -214,6 +260,7 @@ function battle(){
  getBattleWinner()
  updateBattleWinner()
  moveBattleCards()
+ closeModal()
 }
 
 
@@ -241,15 +288,22 @@ function moveCards(){
             
             
     }else if(roundWinner === 'Draw'){
-        // const firstCard = playChoice
-        // const firstCal = compChoice
-        // compDeck.push(firstCal)
-        // playerDeck.push(firstCard)
-        battle()
+       openModal()
     }
         
 }
 
+function openModal(){
+    if (modal == null) return
+    modal.style.transform = 'translate(-50%, -50%) scale(1)';
+    overlay.classList.add('active')
+}
+
+function closeModal(){
+    if (modal == null) return
+    modal.style.transform = 'translate(-50%, -50%) scale(0)';
+    overlay.classList.remove('active')
+}
 
 function draw(){ 
     getHTML()
@@ -257,9 +311,8 @@ function draw(){
     getWinner()
     updateWinner()
     moveCards()
-    console.log(playerDeck)
-    console.log(compDeck)
-    
+    // console.log(playerDeck)
+    // console.log(compDeck)
 }
 
 
@@ -274,12 +327,18 @@ function nextMove(){
     gameWinner.innerText = ''
     console.log(playerDeck)
     console.log(compDeck)
-    compChoice.style.border = 'none';
+    compChoice.style.border = '';
+    compChoice.style.backgroundColor = '';
     playChoice.style.border = 'none';
-    battleComp.style.border = 'none';
-    battlePlay.style.border = 'none';
+    playChoice.style.backgroundColor = '';
+    battleComp.style.backgroundColor = '';
+    battlePlay.style.backgroundColor = '';
+    battleComp.style.border = '';
+    battlePlay.style.border = '';
     battleComp.innerHTML = null;
     battlePlay.innerHTML = null;
+    score()
+    updateScore()
 }
 
 function clickEvt(){
@@ -289,4 +348,5 @@ function clickEvt(){
         nextMove()
     }
     showWinScreen()
+    endGame()
 }

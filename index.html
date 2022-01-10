@@ -10,23 +10,42 @@
 
 </head>
 <body>
-    <h1 class="title">GAME OF WAR</h1>
+    <h1 class="title">SPACE WAR</h1>
+    <div class = 'empty'></div>
+    <button class="button" id='start'> Start Game</button>
+<input type='button' class='button' onclick='location.reload();' value='Reset' />
+     <div class = 'score' id='player-score'>Player Score: 0 </div>
+     <div class = 'score' id='comp-score'>Computer Score: 0</div>
+<section class="gameBoard" id="gameBoard">
+     
+     
     <div class='card playerCard ' id = 'playerDeck'>52</div>
     <div class='cardTwo' id ='playerChoice'></div>
     <div class='cardTwo' id = 'computerChoice'></div>
     <div class='card compCard' id = 'computerDeck'></div>
     <div class='result'><h1 id='msgContent'></h1></div>
     
+   
+   
     <div class = 'empty'></div>
     <div class = 'draw'id= 'playerBattle'></div>
     <div class = 'draw' id='compBattle'></div>
     <div class = 'empty'></div>
+    <div class = 'empty' id='empty'>
+        
+    </div>
     <div class='win'><h1 id='gameWinMsg'></h1></div>
-    <div class = 'empty'></div>
-    
 
-<button class="button" id='start'> Start Game</button>
-<input type='button' class='button' onclick='location.reload();' value='Reset' />
+    <div class="modal" id="modal">
+        It's a draw. Flip the next card to battle for the win!
+        <br>
+            <button class="open-battle" id="open-battle-button">BATTLE!</button>
+        </div>
+   
+    <div id="overlay"></div>
+    
+</section>
+
 
 <!-- <img src="https://i.imgur.com/w8sXFZl.gif"> -->
 

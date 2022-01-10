@@ -1,21 +1,20 @@
 
 
 body{
+    background-image: url('https://i.imgur.com/LymI4TW.jpeg');
     display: grid;
     grid-template-columns: repeat(5, 200px);
-    grid-template-rows: 100px 200px 200px 50px 50px;
+    grid-template-rows: 100px 50px 200px 200px 50px;
     grid-row-gap: 40px;
     grid-column-gap: 10px;
     width: 900px;
-    margin: 0;
     padding: 5px;
     text-align: center;
-    background-image: url('https://i.imgur.com/4gPXpDO.mp4')
+    left: 20%
     
 }
 .card{
     border: 1px solid black;
-    background-color: white;
     height: 200px;
     width: 150px;
     position: relative;
@@ -37,17 +36,19 @@ body{
 }
 
 .compCard{
-    background-color: white;
+    background-color: '';
     color: black;
     font-size: 50px;
     border: none;
 }
 .result{
-    
+    color: thistle;
     display: flex;
     justify-content: center;
-    font-size: 10px;
+    font-size: 20px;
     padding: 40px 0px 120px 0px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .button{
@@ -70,7 +71,6 @@ body{
 
 .win{
     grid-row: span 2;
-   
     color: red;
     
 }
@@ -80,6 +80,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
 }
 
 #playerChoice{
@@ -93,7 +95,6 @@ body{
 
 .draw{
     border: '';
-    background-color: white;
     height: 200px;
     width: 150px;
     position: relative;
@@ -105,4 +106,78 @@ body{
     align-items: center;
     color: '';
     font-size: 50px;
+}
+
+.title{
+    color: thistle;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  font-variant: small-caps;
+  
+}
+
+
+
+.score{
+    color: thistle;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgb(177, 104, 177, .5);
+    justify-content: center;
+    align-items: center;
+    text-shadow:1px 0 0 black,0 1px 0 black,-1px 0 0 black,0 -1px 0 black;
+}
+
+.gameBoard{
+   pointer-events: none;
+   /* display: flex; */
+   display: grid;
+   grid-template-columns: repeat(5, 200px);
+   grid-template-rows: 100px 50px 200px 200px 50px;
+   grid-row-gap: 40px;
+   grid-column-gap: 10px;
+   width: 900px;
+   margin: 0;
+   padding: 5px;
+   text-align: center;
+}
+
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid whitesmoke;
+    border-radius: 15px;
+    z-index: 10;
+    background-color: rgb(241, 101, 241);
+    width: 300px;
+    max-width: 70%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+#open-battle{
+    font-family:fantasy;
 }
