@@ -29,17 +29,22 @@ body{
 }
 
 .playerCard{
-    background-color: thistle;
-    color: black;
+    background-image: url(https://i.imgur.com/Yz4UChd.jpeg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 50px;
     cursor: pointer;
+    color: white;
+    text-shadow:1px 0 0 black,0 1px 0 black,-1px 0 0 black,0 -1px 0 black;
 }
 
 .compCard{
-    background-color: '';
-    color: thistle;
+    background-image: '';
+    color: white;
     font-size: 50px;
     border: none;
+    text-shadow:1px 0 0 black,0 1px 0 black,-1px 0 0 black,0 -1px 0 black;
 }
 .result{
     color: thistle;
